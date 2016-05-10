@@ -5,9 +5,7 @@ from pyquery import PyQuery
 
 class SwarmerTasks(TaskSet):
     def on_start(self):
-        self.sitemap_links = []
-
-        r = self.client.get("/sitemap.xml?page=1")
+        r = self.client.get("/sitemap.xml")
         pq = PyQuery(r.content, parser='html')
         self.sitemap_links = []
         for loc in pq.find('loc'):
@@ -21,6 +19,5 @@ class SwarmerTasks(TaskSet):
 
 class Swarmer(HttpLocust):
     task_set = SwarmerTasks
-    host = "http://docs.locust.io/en/latest/"
-    min_wait = 20  * 1000
+    min_wait = 20 * 1000
     max_wait = 600 * 1000
