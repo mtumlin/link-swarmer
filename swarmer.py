@@ -5,8 +5,8 @@ from pyquery import PyQuery
 
 class SwarmerTasks(TaskSet):
     def on_start(self):
-        r = self.client.get("/sitemap.xml")
-        pq = PyQuery(r.content, parser='html')
+        request = self.client.get("/sitemap.xml")
+        pq = PyQuery(request.content, parser='html')
         self.sitemap_links = []
         for loc in pq.find('loc'):
             self.sitemap_links.append(PyQuery(loc).text())
@@ -14,7 +14,7 @@ class SwarmerTasks(TaskSet):
     @task(10)
     def load_page(self):
         url = random.choice(self.sitemap_links)
-        r = self.client.get(url)
+        request = self.client.get(url)
 
 
 class Swarmer(HttpLocust):
