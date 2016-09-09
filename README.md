@@ -1,5 +1,5 @@
 # link-swarmer
-load testing based on [locust.io](www.locust.io) and as of now only contain one test case that utilizie [pyquery](https://pypi.python.org/pypi/pyquery) to parse sitemap.xml for links to visit
+load testing based on [locust.io](www.locust.io), containting a number of diffrent types of tests including; [pyquery](https://pypi.python.org/pypi/pyquery) to parse sitemap.xml for links to visit. The diffrent test cases are splitt up into diffrent files to be more flexible to choose what type of tests you want to run.
 
 
 ##Setup
